@@ -2,7 +2,7 @@ require("dotenv").config();
 const express = require("express");
 const morgan = require("morgan");
 
-const {PORT} = precess.env;
+const {PORT} = process.env;
 
 const app = express();
 
@@ -14,6 +14,21 @@ app.use(express.json());
 
 //ENDPOINTS
 
+//middleware errores
+app.use((error, req, res, next)=>{
+    res.status(error.httpStatus).send({
+        status: "error",
+        message: error.message,
+    });
+});
+
+//middleware 404 not found
+app.use((req,res)=>{
+    res.status(404).send({
+        status: "error",
+        message: "Not found"
+    });
+});
 
 //Express Listen
 app.listen(PORT,()=>{
