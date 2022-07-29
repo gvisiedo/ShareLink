@@ -1,3 +1,4 @@
+"use strict"
 require("dotenv").config();
 const express = require("express");
 const morgan = require("morgan");
@@ -16,7 +17,7 @@ app.use(express.json());
 
 //middleware errores
 app.use((error, req, res, next)=>{
-    res.status(error.httpStatus).send({
+    res.status(error.httpStatus || 500).send({
         status: "error",
         message: error.message,
     });
