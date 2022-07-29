@@ -1,0 +1,32 @@
+{
+  "name": "shareyourlink",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gvisiedo/ShareYourLink.git"
+  },
+  "keywords": [],
+  "author": "Gregorio",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gvisiedo/ShareYourLink/issues"
+  },
+  "homepage": "https://github.com/gvisiedo/ShareYourLink#readme",
+  "devDependencies": {
+    "eslint": "^8.20.0",
+    "morgan": "^1.10.0",
+    "nodemon": "^2.0.19",
+    "prettier": "^2.7.1"
+  },
+  "dependencies": {
+    "dotenv": "^16.0.1",
+    "express": "^4.18.1",
+    "mysql2": "^2.3.3"
+  }
+}
