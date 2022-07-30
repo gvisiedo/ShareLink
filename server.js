@@ -1,38 +1,41 @@
 "use strict"
-require("dotenv").config();
-const express = require("express");
-const morgan = require("morgan");
 
-const {PORT} = process.env;
+=======
+require('dotenv').config();
+const express=require('express');
+const morgan = require('morgan');
 
-const app = express();
+const {newUser} = require('./controllers/users');
 
-//middleware morgan para loguear peticiones http
-app.use(morgan("dev"));
+const app= express();
 
-// middleware para parsear el json del body
+//Importaciones Locales
+const{PORT}=process.env;
+
+//middleware
+app.use(morgan('dev'));
 app.use(express.json());
 
-//ENDPOINTS
+//POST - '/users' - Creación de usuario sin activar - obligatorio email y password.
+app.post('/user', newUser);
 
-//middleware errores
-app.use((error, req, res, next)=>{
-    res.status(error.httpStatus || 500).send({
-        status: "error",
-        message: error.message,
-    });
-});
-
-//middleware 404 not found
+//middleware Not Found-404
 app.use((req,res)=>{
-    res.status(404).send({
-        status: "error",
-        message: "Not found"
-    });
+   res.status(404).send({
+    status:'Error',
+    message:'Not Found'
+   })
 });
 
-//Express Listen
-app.listen(PORT,()=>{
-    console.log(`Servidor activo en http://127.0.0.1:${PORT}`);
+app.use((error,req,res,next)=>{
+     res.status(error.httpStaus || 500).send({
+        status:'Error',
+        message: error.message
+     })
 })
+
+
+app.listen(PORT,()=>{
+    console.log("Heyyyy I'm here")
+});
 
