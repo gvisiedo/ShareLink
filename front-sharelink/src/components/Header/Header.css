@@ -20,7 +20,8 @@
     gap: 2rem;
 
 }
-.header-sharelink nav ul{
+
+.header-sharelink nav ul {
     gap: 1rem;
 }
 
@@ -31,11 +32,12 @@ button:not(.buttonSearch) {
     color: black;
     font-family: 'Roboto', sans-serif;
     font-size: 16px;
-  
+
 }
+
 nav ul li,
-button:not(.buttonSearch, .buttonFilter){
-    height: 2rem;
+button:not(.buttonSearch, .buttonFilter) {
+    min-height: 2rem;
     width: 5rem;
     background-color: white;
     box-shadow: 0px 1px 2px 3px lightblue;
@@ -43,4 +45,3 @@ button:not(.buttonSearch, .buttonFilter){
     border: none;
 
 }
-

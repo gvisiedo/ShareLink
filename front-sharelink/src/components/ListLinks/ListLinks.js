@@ -6,7 +6,7 @@ import "./ListLinks.css";
 
 const ListLinks = ({ reload, result, fetchKey }) => {
   const user = useUser();
-  const links = useGetLinks(fetchKey);
+  const [links] = useGetLinks(fetchKey);
   console.log(links);
 
   if (!user) {

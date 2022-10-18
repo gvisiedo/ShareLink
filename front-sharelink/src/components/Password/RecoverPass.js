@@ -1,32 +1,28 @@
 import { useState } from "react";
 import { Link, Navigate } from "react-router-dom";
+import { useRecoverPass } from "../api";
 
 const RecoverPass = () => {
   const [email, setEmail] = useState();
-  const [result, setResult] = useState();
+
+  const [status, , sendData] = useRecoverPass();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const res = await fetch(
-      `${process.env.REACT_APP_BACKEND}/users/recover_password`,
-      {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email }),
-      }
-    );
-    console.log(res);
-    const data = await res.json();
-    console.log("soy data de editPassword", data);
-    setResult(data);
-    console.log(email);
+    sendData({ email });
   };
+  console.log(status);
+  // console.log(response);
 
   return (
     <div className="bg">
+      <h2>
+        <Link to={"/"}>X</Link>
+      </h2>
+
       <form onSubmit={handleSubmit}>
         <label>
-          <p>Introduce tu mail para recuperar el Password</p>
+          <p>Introduce tu email para recuperar la contraseña</p>
           <input
             name="name"
             type="email"
@@ -36,9 +32,9 @@ const RecoverPass = () => {
         </label>
         <button>Enviar</button>
       </form>
-      {result?.status === "Ok" && <Navigate to="recover_newpassword" />}
-      <Link to={"/"}>Volver </Link>
-      {result?.status === "error" && (
+      {status === "success" && <Navigate to="recover_newpassword" />}
+
+      {status === "error" && (
         <p>Recuerda que todos los campos son obligatorios</p>
       )}
     </div>

@@ -54,13 +54,13 @@ const Auth = () => {
         <h1>ShareLink</h1>
         <ul>
           <li>
-            <NavLink to="/">Home</NavLink>
+            <NavLink to="/">Inicio</NavLink>
           </li>
           <li>
-            <NavLink to="/login">Login</NavLink>
+            <NavLink to="/login">Acceso</NavLink>
           </li>
           <li>
-            <NavLink to="/signup">Sign Up</NavLink>
+            <NavLink to="/signup">Registro</NavLink>
           </li>
         </ul>
       </nav>
