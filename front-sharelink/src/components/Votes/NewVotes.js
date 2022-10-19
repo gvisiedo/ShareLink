@@ -25,7 +25,6 @@ const NewVotes = ({ id, value }) => {
       }
     );
     const resData = await res.json();
-    console.log(resData, "soy resdata");
     setResponse(resData);
     setVote(null);
 

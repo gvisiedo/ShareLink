@@ -7,14 +7,13 @@ const Search = ({ setResult, fetchKey }) => {
   const [order, setOrder] = useState("");
   const [direction, setDirection] = useState("");
   const [searchInput, setSearchInput] = useState("");
-  const [searchResult, error] = useGetSearch(searchInput, order, direction);
+  const [searchResult] = useGetSearch(searchInput, order, direction);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     setResult(searchResult, fetchKey);
     setSearchInput("");
   };
-  console.log(error);
 
   return (
     <>
