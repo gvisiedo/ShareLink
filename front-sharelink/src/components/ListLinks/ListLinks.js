@@ -6,8 +6,11 @@ import "./ListLinks.css";
 
 const ListLinks = ({ reload, result, fetchKey }) => {
   const user = useUser();
-  const [links] = useGetLinks(fetchKey);
-  console.log(links);
+  const [links, error] = useGetLinks(fetchKey);
+
+  console.log("soy result", result);
+  console.log("soy links", links);
+  console.log(error);
 
   if (!user) {
     return <Navigate to="/" />;
@@ -15,17 +18,17 @@ const ListLinks = ({ reload, result, fetchKey }) => {
 
   return (
     <ul className="listLinks">
-      {result?.data === undefined &&
-        links?.data.map((link) => (
-          <li key={link.id_link}>
-            <OneLink link={link} reload={reload} />
-          </li>
-        ))}
-      {result?.data.map((link) => (
-        <li key={link.id_link}>
-          <OneLink link={link} reload={reload} />
-        </li>
-      ))}
+      {result === undefined
+        ? links?.data?.map((link) => (
+            <li key={link.id_link}>
+              <OneLink link={link} reload={reload} />
+            </li>
+          ))
+        : result.data?.map((link) => (
+            <li key={link.id_link}>
+              <OneLink link={link} reload={reload} />
+            </li>
+          ))}
     </ul>
   );
 };
