@@ -33,7 +33,6 @@ const DeleteUser = () => {
           title="¡Vaya!"
           message="Has eliminado tu cuenta
       espero vuelvas pronto"
-          navigate="/"
         />
       )}
       {response?.status === "ok" && user === null}

@@ -21,6 +21,9 @@ const Auth = () => {
           <li>
             <NavLink to="/mylinks">Mis Links</NavLink>
           </li>
+          <li>
+            <NavLink to="/myfavorites">Favoritos</NavLink>
+          </li>
         </ul>
         <section className="logeado">
           <div>

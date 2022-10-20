@@ -4,7 +4,7 @@ import { useGetLinks } from "../api";
 import OneLink from "../OneLink/OneLink";
 import "./ListLinks.css";
 
-const ListLinks = ({ reload, result, fetchKey, setResult }) => {
+const ListLinks = ({ result, fetchKey, setResult }) => {
   const user = useUser();
   const [links] = useGetLinks(fetchKey);
 
@@ -19,19 +19,19 @@ const ListLinks = ({ reload, result, fetchKey, setResult }) => {
     <ul className="listLinks">
       {result?.data.length === 0 && (
         <li className="messageResponse">
-          <p>Aún no tienes enlaces compartidos</p>
+          <p>No hemos encontrado ningun resultado en tú búsqueda</p>
           <button onClick={() => onClickEvent()}>volver</button>
         </li>
       )}
       {result === undefined
         ? links?.data?.map((link) => (
             <li key={link.id_link}>
-              <OneLink link={link} reload={reload} />
+              <OneLink link={link} />
             </li>
           ))
         : result.data?.map((link) => (
             <li key={link.id_link}>
-              <OneLink link={link} reload={reload} />
+              <OneLink link={link} />
             </li>
           ))}
     </ul>

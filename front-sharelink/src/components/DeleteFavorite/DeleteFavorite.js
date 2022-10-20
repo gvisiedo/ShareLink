@@ -1,25 +1,26 @@
 import { Link, useParams } from "react-router-dom";
-import { useDeleteLink } from "../api";
+import { useDeleteFavorite } from "../api";
 import MessageStatus from "../MessageStatus/MessageStatus";
-import "./DeleteLink.css";
 
-const DeleteLink = () => {
+const DeleteFavorite = () => {
   const { id } = useParams();
 
-  const [, response, sendData] = useDeleteLink(id);
+  const [, response, sendData] = useDeleteFavorite(id);
+  console.log(response);
 
-  const deleteLink = async () => {
+  const deleteFavorite = async () => {
     sendData({}, "DELETE");
   };
+
   return (
     <div className="bg">
       <section className="fg">
         {!response && (
           <section className="deleteLink_confirmation">
-            <p>¿Quieres borrar tu publicación?</p>
+            <p>¿Quieres borrar el link de tu lista de favoritos?</p>
             <div>
-              <button onClick={() => deleteLink()}>si</button>
-              <Link to="/mylinks">
+              <button onClick={() => deleteFavorite()}>si</button>
+              <Link to="/myfavorites">
                 <button>No</button>
               </Link>
             </div>
@@ -28,9 +29,9 @@ const DeleteLink = () => {
         {response?.status === "ok" && (
           <>
             <MessageStatus
-              title="¿Felicidades!"
+              title="¡Felicidades!"
               message="Tu publicación se ha borrado correctamente"
-              navigate="/mylinks"
+              navigate="/myfavorites"
             />
           </>
         )}
@@ -39,4 +40,4 @@ const DeleteLink = () => {
   );
 };
 
-export default DeleteLink;
+export default DeleteFavorite;

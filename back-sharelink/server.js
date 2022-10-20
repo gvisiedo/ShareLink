@@ -31,6 +31,9 @@ const {
   editVote,
   deleteVote,
   ownerLink,
+  favoriteLink,
+  getFavorite,
+  deleteFavorite,
 } = require('./controllers/links');
 
 //middelwares locales
@@ -109,6 +112,15 @@ app.put('/links/:id', thisIsUser, linkExists, authEdit, editLink);
 
 //- DELETE - '/links/:id/votes' -Borrar un vot creado por el mismo usuario, --Token obligatorio.
 app.delete('/links/:id/votes', thisIsUser, voteExist, authEditVote, deleteVote);
+
+//-PUT -'/links/favorite/:id'
+app.post('/favorites', thisIsUser, favoriteLink);
+
+//-GET -'/links/favorite'
+app.get('/favorites', thisIsUser, getFavorite);
+
+//-delte -'/favorite'
+app.delete('/favorites/:id', thisIsUser, deleteFavorite);
 
 //middleware httpStatus
 app.use((error, req, res, next) => {

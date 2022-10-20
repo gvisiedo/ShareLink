@@ -20,6 +20,8 @@ import MessageStatus from "./components/MessageStatus/MessageStatus";
 import RecoverNewPass from "./components/Password/RecoverNewPass";
 import DeleteUser from "./components/DeleteUser/DeleteUser";
 import "./App.css";
+import FavoritePage from "./Pages/FavoritesPage/FavoritePage";
+import DeleteFavorite from "./components/DeleteFavorite/DeleteFavorite";
 
 function App() {
   // búsqueda de links
@@ -65,6 +67,7 @@ function App() {
                 element={<ValidateEmail />}
               />
               <Route path="mylinks" element={<MyLinksPage />} />
+              <Route path="myfavorites" element={<FavoritePage />} />
               <Route path="mylinks/delete/:id" element={<DeleteLink />} />
               <Route path="mylinks/edit/:id" element={<EditLink />} />
               <Route path="users/:id" element={<GetUser />} />
@@ -72,6 +75,7 @@ function App() {
               <Route path="/users/:id/password" element={<EditPass />} />
               <Route path="/users/recover_password" element={<RecoverPass />} />
               <Route path="/deleteuser" element={<DeleteUser />} />
+              <Route path="/deletefavorite/:id" element={<DeleteFavorite />} />
               <Route
                 path="users/recover_password/recover_newpassword"
                 element={<RecoverNewPass />}

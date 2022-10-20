@@ -9,14 +9,14 @@ const main = async () => {
     //Crear la conexión
     connection = await getDB();
 
-
-    console.log("Creating table...")
+    console.log('Creating table...');
     //Eliminar tablas si existen
     await connection.query(`DROP TABLE IF EXISTS votes_links`);
+    await connection.query(`DROP TABLE IF EXISTS favorites`);
     await connection.query(`DROP TABLE IF EXISTS links`);
     await connection.query(`DROP TABLE IF EXISTS users`);
 
-    console.log("The tables has been created successfully!!!")
+    console.log('The tables has been created successfully!!!');
     //Crear las tablas
     await connection.query(`
  
@@ -47,6 +47,17 @@ const main = async () => {
     FOREIGN KEY (id_user) REFERENCES users(id_user)
    );
  `);
+    await connection.query(`
+ CREATE TABLE favorites(
+  id_favorite INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+  id_link INT NOT NULL,
+  id_user INT NOT NULL,
+  FOREIGN KEY (id_link) REFERENCES links(id_link)
+  ON DELETE CASCADE,
+  FOREIGN KEY (id_user) REFERENCES users(id_user)
+  ON DELETE CASCADE
+ );
+ `);
 
     await connection.query(`
    CREATE TABLE votes_links(
@@ -60,14 +71,14 @@ const main = async () => {
    ON DELETE CASCADE,
    FOREIGN KEY (id_link) REFERENCES links(id_link)
    ON DELETE CASCADE
-)
+);
  `);
-  console.log("Creating user admin...")
+    console.log('Creating user admin...');
     await connection.query(`
    INSERT INTO users(name,email,password,role,active)
    VALUES("Gregorio","gregorio@mail.com",SHA2("${process.env.PASSWORD_USER_ADMIN}",512),"admin",true)
  `);
-    console.log("The user admin has been created successfully!!!")
+    console.log('The user admin has been created successfully!!!');
   } catch (error) {
     console.log(error);
     throw new error('Conection is not possible');

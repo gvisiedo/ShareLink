@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Navigate } from "react-router-dom";
 import { useUser } from "../../context/UserContext";
 import { useNewLink } from "../api";
+import MessageStatus from "../MessageStatus/MessageStatus";
 import "./NewLink.css";
 
 const NewLink = ({ reload }) => {
@@ -49,7 +50,11 @@ const NewLink = ({ reload }) => {
         <button>Compartir</button>
       </form>
       {response?.status === "ok" && (
-        <p>!Felicidades¡ Se ha creado tu publicación correctamente</p>
+        <MessageStatus
+          title="Felicidades"
+          message="Tú publicación se ha creado correctamente"
+          navigate="/links"
+        />
       )}
       {response?.status === "error" && (
         <p className="error">

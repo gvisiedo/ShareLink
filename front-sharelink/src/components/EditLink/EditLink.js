@@ -59,8 +59,9 @@ const EditLink = () => {
       {response?.status === "OK" && (
         <>
           <MessageStatus
+            title="¡Felicidades!"
             message="Tu link se ha modificado correactamente"
-            navigate="/mylinks"
+            navigate="/links"
           />
         </>
       )}
