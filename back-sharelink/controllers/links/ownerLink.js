@@ -9,7 +9,7 @@ const ownerLink = async (req, res, next) => {
             SELECT links.id_link,title,url,image,description,AVG(IFNULL(votes_links.vote,0)) AS AVGvote,links.id_user
             FROM links
             LEFT JOIN votes_links ON(links.id_link = votes_links.id_link)
-            WHERE links.id_user = ?
+            WHERE links.id_user = ? AND links.deleted = false
             GROUP BY links.id_link
             ORDER BY creation_date DESC
             `,

@@ -1,5 +1,7 @@
 import { Link } from "react-router-dom";
 import noImage from "../../img/photo-no-image-available.jpg";
+import "./GetFavorite.css";
+
 const GetFavorite = ({ favorite }) => {
   return (
     <section className="link">
@@ -15,8 +17,8 @@ const GetFavorite = ({ favorite }) => {
         <p>{favorite.description}</p>
       </main>
       <footer>
-        <button>
-          <Link to={`/deletefavorite/${favorite.id_link}`}>delete</Link>
+        <button className="buttonDeleteFavorite">
+          <Link to={`/deletefavorite/${favorite.id_favorite}`}>borrar</Link>
         </button>
       </footer>
     </section>

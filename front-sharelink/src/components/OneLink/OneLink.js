@@ -2,8 +2,9 @@ import { NavLink } from "react-router-dom";
 import noImage from "../../img/photo-no-image-available.jpg";
 import AddFavorite from "../AddFavorite/AddFavorite";
 import NewVotes from "../Votes/NewVotes";
+
 import "./OneLink.css";
-const OneLink = ({ link }) => {
+const OneLink = ({ link, myFavorites }) => {
   return (
     <section className="link">
       <main>
@@ -19,7 +20,7 @@ const OneLink = ({ link }) => {
       </main>
       <footer>
         <NewVotes value={link.voteAVG} id={link.id_link} />
-        <AddFavorite id={link.id_link} />
+        <AddFavorite id={link.id_link} myFavorites={myFavorites} />
         <p className="author">
           create by{" "}
           <NavLink to={"/users/" + link.id_user}>{link.email}</NavLink>

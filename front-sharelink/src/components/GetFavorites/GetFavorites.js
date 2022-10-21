@@ -1,8 +1,16 @@
+import { Navigate } from "react-router-dom";
+import { useUser } from "../../context/UserContext";
 import { useGetFavorites } from "../api";
+
 import GetFavorite from "../GetFavorite/GetFavorite";
 
 const GetFavorites = () => {
+  const user = useUser();
   const [favorites] = useGetFavorites();
+
+  if (!user) {
+    return <Navigate to="/" />;
+  }
 
   return (
     <>

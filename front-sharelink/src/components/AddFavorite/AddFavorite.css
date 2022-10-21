@@ -1,0 +1,11 @@
+.labelAddFavorite {
+    background-color: transparent;
+    border: none;
+}
+
+footer .labelAddFavorite img {
+    height: 30px;
+    width: 30px;
+    cursor: pointer;
+
+}

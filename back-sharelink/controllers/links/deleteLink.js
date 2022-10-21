@@ -1,32 +1,32 @@
-"use estrict"
+'use estrict';
 const getDB = require('../../db/db');
 
-
 const deleteLink = async (req, res, next) => {
-   let connection;
-   try {
-      connection = await getDB();
+  let connection;
+  try {
+    connection = await getDB();
 
-      const { id } = req.params;
+    const { id } = req.params;
 
-      await connection.query(`
-        DELETE
-        FROM links 
+    await connection.query(
+      `
+        UPDATE links
+        SET deleted = true
         WHERE id_link = ?
-      ` , [id]);
+      `,
+      [id]
+    );
 
-      res.send({
-         status: "ok",
-         message: "The link has been removed succesfully!!!"
-      })
-
-   } catch (error) {
-      next(error);
-      console.log(error)
-   } finally {
-      if (connection) connection.release();
-   }
-
-}
+    res.send({
+      status: 'ok',
+      message: 'The link has been removed succesfully!!!',
+    });
+  } catch (error) {
+    next(error);
+    console.log(error);
+  } finally {
+    if (connection) connection.release();
+  }
+};
 
 module.exports = deleteLink;

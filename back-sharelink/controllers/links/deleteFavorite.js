@@ -4,7 +4,7 @@ const deleteFavorite = async (req, res, next) => {
   try {
     connection = await getDb();
     const { id } = req.params;
-    console.log(id);
+
     await connection.query(
       `
     DELETE

@@ -6,7 +6,6 @@ const DeleteFavorite = () => {
   const { id } = useParams();
 
   const [, response, sendData] = useDeleteFavorite(id);
-  console.log(response);
 
   const deleteFavorite = async () => {
     sendData({}, "DELETE");

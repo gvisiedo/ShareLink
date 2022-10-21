@@ -6,7 +6,7 @@ const getFavorite = async (req, res, next) => {
 
     const [result] = await connection.query(
       `
-    SELECT id_favorite,favorites.id_link,links.title,links.image,links.description,links.url
+    SELECT id_favorite,favorites.id_link,links.title,links.image,links.description,links.url,favoriteValue,favorites.id_user
     FROM favorites
     INNER JOIN links ON (links.id_link = favorites.id_link)
     WHERE favorites.id_user = ?

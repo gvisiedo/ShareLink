@@ -44,6 +44,7 @@ const main = async () => {
     title VARCHAR(100) NOT NULL,
     description VARCHAR(200),
     id_user INT NOT NULL,
+    deleted BOOLEAN DEFAULT false,
     FOREIGN KEY (id_user) REFERENCES users(id_user)
    );
  `);
@@ -52,6 +53,7 @@ const main = async () => {
   id_favorite INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
   id_link INT NOT NULL,
   id_user INT NOT NULL,
+  favoriteValue BOOLEAN,
   FOREIGN KEY (id_link) REFERENCES links(id_link)
   ON DELETE CASCADE,
   FOREIGN KEY (id_user) REFERENCES users(id_user)

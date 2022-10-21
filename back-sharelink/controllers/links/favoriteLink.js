@@ -22,8 +22,8 @@ const favoriteLink = async (req, res, next) => {
 
     await connection.query(
       `
-    INSERT INTO favorites (id_link,id_user)
-    VALUES(?,?)
+    INSERT INTO favorites (id_link,id_user,favoriteValue)
+    VALUES(?,?,true)
     
     `,
       [id, req.Auth.id]
@@ -31,7 +31,7 @@ const favoriteLink = async (req, res, next) => {
 
     res.send({
       status: 'ok',
-      message: 'has been added to ypour favorites list',
+      message: 'has been added to your favorites list',
     });
   } catch (error) {
     next(error);

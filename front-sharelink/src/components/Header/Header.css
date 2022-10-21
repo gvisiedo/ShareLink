@@ -36,7 +36,7 @@ button:not(.buttonSearch) {
 }
 
 nav ul li,
-button:not(.buttonSearch, .buttonFilter) {
+button:not(.buttonSearch, .buttonFilter, .labelAddFavorite) {
     min-height: 2rem;
     width: 5rem;
     background-color: white;
