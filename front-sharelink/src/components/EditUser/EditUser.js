@@ -1,7 +1,7 @@
 // import useFetch from "../../hooks/useFetch";
 import useFetch from "fetch-suspense";
 import { useState } from "react";
-import { useParams } from "react-router-dom";
+import { Navigate, useParams } from "react-router-dom";
 import { useSetUser, useUser } from "../../context/UserContext";
 import MessageStatus from "../MessageStatus/MessageStatus";
 import "./EditUser.css";
@@ -12,9 +12,12 @@ const EditUser = () => {
   const { id } = useParams();
   const [response, setResponse] = useState();
 
-  const userInformation = useFetch(`http://127.0.0.1:3000/users/${id}`, {
-    headers: user ? { Authorization: user.data } : {},
-  });
+  const userInformation = useFetch(
+    `${process.env.REACT_APP_BACKEND}/users/${id}`,
+    {
+      headers: user ? { Authorization: user.data } : {},
+    }
+  );
 
   const [name, setName] = useState(userInformation.data.name || " ");
   const [email, setEmail] = useState(userInformation.data.email);
@@ -30,7 +33,7 @@ const EditUser = () => {
     formData.append("email", email);
     formData.append("perfil", perfil);
 
-    const res = await fetch(`http://127.0.0.1:3000/users/${id}`, {
+    const res = await fetch(`${process.env.REACT_APP_BACKEND}/users/${id}`, {
       method: "PUT",
       headers: user ? { Authorization: user.data } : {},
       body: formData,
@@ -46,6 +49,9 @@ const EditUser = () => {
     setPerfil(file);
     setImagePreview(URL.createObjectURL(file));
   };
+  if (!user) {
+    return <Navigate to="/" />;
+  }
 
   return (
     <form onSubmit={handleSubmit} className="editUser">

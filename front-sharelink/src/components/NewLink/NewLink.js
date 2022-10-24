@@ -16,8 +16,9 @@ const NewLink = ({ reload }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    sendData({ title, url, description });
+
     reload();
+    sendData({ title, url, description });
     setTitle("");
     setUrl("");
     setDescription("");
@@ -53,7 +54,7 @@ const NewLink = ({ reload }) => {
         <MessageStatus
           title="Felicidades"
           message="Tú publicación se ha creado correctamente"
-          navigate="/links"
+          navigate="/mylinks"
         />
       )}
       {response?.status === "error" && (

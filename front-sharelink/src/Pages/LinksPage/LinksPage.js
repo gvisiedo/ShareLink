@@ -15,12 +15,7 @@ const LinksPage = ({ fetchKey, reload, result, setResult }) => {
       <div>
         <Search setResult={setResult} fetchKey={fetchKey} />
         <NewLink reload={reload} />
-        <ListLinks
-          reload={reload}
-          result={result}
-          fetchKey={fetchKey}
-          setResult={setResult}
-        />
+        <ListLinks result={result} fetchKey={fetchKey} setResult={setResult} />
       </div>
     </section>
   );

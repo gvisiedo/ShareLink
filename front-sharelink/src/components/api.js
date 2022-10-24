@@ -3,16 +3,16 @@ import useSendData from "../hooks/useSendData";
 import useSendDataNotAuth from "../hooks/useSendDataNotAuth";
 
 //Métodos que no se envía body
-export const useGetLinks = (key) =>
-  useFetch(`${process.env.REACT_APP_BACKEND}/links`, key);
+export const useGetLinks = (fetchKey) =>
+  useFetch(`${process.env.REACT_APP_BACKEND}/links`, fetchKey);
 
 export const useGetMyLinks = () =>
   useFetch(`${process.env.REACT_APP_BACKEND}/mylinks`);
 
-export const useGetSearch = (params, order, direction, key) =>
+export const useGetSearch = (params, order, direction, fetchKey) =>
   useFetch(
     `${process.env.REACT_APP_BACKEND}/links?search=${params}&order=${order}&direction=${direction}`,
-    key
+    fetchKey
   );
 export const useGetUser = (id) =>
   useFetch(`${process.env.REACT_APP_BACKEND}/users/${id}`);

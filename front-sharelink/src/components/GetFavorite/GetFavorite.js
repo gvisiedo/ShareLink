@@ -1,17 +1,15 @@
 import { Link } from "react-router-dom";
+import useImageName from "../../hooks/useImageName";
 import noImage from "../../img/photo-no-image-available.jpg";
 import "./GetFavorite.css";
 
 const GetFavorite = ({ favorite }) => {
+  const imageName = useImageName(favorite, noImage);
   return (
     <section className="link">
       <main>
         <a href={favorite.url}>
-          {favorite.image === "photoDefault" ? (
-            <img src={noImage} alt={favorite.title} />
-          ) : (
-            <img src={favorite.image} alt={favorite.title} />
-          )}
+          <img src={imageName} alt={favorite.title} />
         </a>
         <h2>{favorite.title}</h2>
         <p>{favorite.description}</p>

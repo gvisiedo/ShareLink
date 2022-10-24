@@ -19,9 +19,9 @@ import ErrorBoundary from "./ErrorBoundary";
 import MessageStatus from "./components/MessageStatus/MessageStatus";
 import RecoverNewPass from "./components/Password/RecoverNewPass";
 import DeleteUser from "./components/DeleteUser/DeleteUser";
-import "./App.css";
 import FavoritePage from "./Pages/FavoritesPage/FavoritePage";
 import DeleteFavorite from "./components/DeleteFavorite/DeleteFavorite";
+import "./App.css";
 
 function App() {
   // búsqueda de links

@@ -1,19 +1,17 @@
 // import useFetch from "../hooks/useFetch";
 import { Link } from "react-router-dom";
+import useImageName from "../../hooks/useImageName";
 import noImage from "../../img/photo-no-image-available.jpg";
 import NewVotes from "../Votes/NewVotes";
 import "./OneMyLink.css";
 
 const OneMyLink = ({ myLink }) => {
+  const nameImage = useImageName(myLink, noImage);
   return (
     <section className="myLink">
       <main>
         <a href={myLink.url}>
-          {myLink.image === "photoDefault" ? (
-            <img src={noImage} alt={myLink.title} />
-          ) : (
-            <img src={myLink.image} alt={myLink.title} />
-          )}
+          <img src={nameImage} alt={myLink.title} />
         </a>
         <h2>{myLink.title}</h2>
         <p>{myLink.description}</p>

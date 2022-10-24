@@ -1,19 +1,18 @@
 import { NavLink } from "react-router-dom";
+import useImageName from "../../hooks/useImageName";
 import noImage from "../../img/photo-no-image-available.jpg";
 import AddFavorite from "../AddFavorite/AddFavorite";
 import NewVotes from "../Votes/NewVotes";
-
 import "./OneLink.css";
+
 const OneLink = ({ link, myFavorites }) => {
+  const nameImage = useImageName(link, noImage);
+
   return (
     <section className="link">
       <main>
         <a href={link.url}>
-          {link.image === "photoDefault" ? (
-            <img src={noImage} alt={link.title} />
-          ) : (
-            <img src={link.image} alt={link.title} />
-          )}
+          <img src={nameImage} alt={link.title} />
         </a>
         <h2>{link.title}</h2>
         <p>{link.description}</p>

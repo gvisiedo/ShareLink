@@ -73,7 +73,7 @@ html {
 
 form:not(.formSearch),
 .getUser {
-  min-height: 300px;
+  min-height: 500px;
   width: 300px;
   background-color: var(--background);
   margin: 4rem auto;
